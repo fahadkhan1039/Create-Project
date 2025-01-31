@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GlowShop - Unique E-Commerce</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         :root {
@@ -11,8 +12,140 @@
             --dark-bg: #0a192f;
         }
 
-        /* Custom Glassmorphism Effect */
-        .glass-card {
+
+        /* nabvar */
+
+     /* Navbar Background and Text Styling */
+.gs-navbar {
+    background: linear-gradient(90deg, #1a1a1a, #0a192f);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    padding: 0.5rem 1rem;
+}
+
+.gs-brand {
+    display: flex;
+    align-items: center;
+}
+
+.gs-brand-text {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #00f3ff; /* Neon blue color for the brand */
+}
+
+/* Navbar Links */
+.gs-nav-link {
+    color: #fff !important;
+    margin: 0 0.5rem;
+    padding: 0.5rem 1rem;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.gs-nav-link:hover {
+    color: #00f3ff !important;
+}
+
+.gs-nav-link::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background: #00f3ff;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s ease;
+}
+
+
+/* Dropdown Menu */
+.gs-dropdown {
+    background: #0a192f;
+    border: 1px solid #444;
+}
+
+.gs-dropdown-item {
+    color: #fff !important;
+    transition: all 0.3s ease;
+}
+
+.gs-dropdown-item:hover {
+    background: #00f3ff !important;
+    color: #1a1a1a !important;
+}
+
+/* Search Bar */
+.gs-search-form {
+    margin-left: 1rem;
+    display: flex;
+    align-items: center;
+}
+
+.gs-search-input {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    width: 170px;
+    transition: all 0.3s ease;
+}
+
+.gs-search-input:focus {
+    border-color: #00f3ff;
+    box-shadow: 0 0 10px #00f3ff;
+    outline: none;
+}
+
+.gs-search-btn {
+    margin-left: 1px;
+    background: #00f3ff;
+    color: #1a1a1a;
+    transition: all 0.3s ease;
+}
+
+.gs-search-btn:hover {
+    background: #00c4d6;
+}
+
+/* Cart and Login Buttons */
+.gs-cart-login {
+    margin-left: 1rem;
+}
+
+.gs-cart-btn,
+.gs-login-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+    margin: 0 0.25rem;
+    padding: 0.5rem 1rem;
+    transition: all 0.3s ease;
+}
+
+.gs-cart-btn:hover,
+.gs-login-btn:hover {
+    background: #00f3ff;
+    color: #1a1a1a !important;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 992px) {
+    .gs-nav {
+        margin-top: 1rem;
+    }
+
+    .gs-search-form {
+        margin-top: 1rem;
+    }
+
+    .gs-cart-login {
+        margin-top: 1rem;
+    }
+}
+
+
+
+
+.glass-card {
             background: rgba(255, 255, 255, 0.1) !important;
             backdrop-filter: blur(10px) !important;
             border: 1px solid rgba(255, 255, 255, 0.2) !important;
@@ -129,21 +262,89 @@
 <body class="bg-dark text-light">
 
 <!-- Animated Navbar -->
-<nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark py-3">
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top gs-navbar">
     <div class="container">
-        <a class="navbar-brand neon-underline" href="#">GLOWSHOP</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <!-- Brand with Logo -->
+        <a class="navbar-brand gs-brand" href="#">
+            <!-- <img src="logo.png" alt="GlowShop Logo" width="40" height="40" class="me-2"> -->
+            <span class="gs-brand-text">GlowShop</span>
+        </a>
+
+        <!-- Toggler Button -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#gsNavbar">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link neon-underline" href="#">Home</a></li>
-                <li class="nav-item"><a class="nav-link neon-underline" href="#">Products</a></li>
-                <li class="nav-item"><a class="nav-link neon-underline" href="#">Cart</a></li>
+
+        <!-- Navbar Links -->
+        <div class="collapse navbar-collapse" id="gsNavbar">
+            <ul class="navbar-nav ms-auto gs-nav">
+                <!-- Home Link -->
+                <li class="nav-item">
+                    <a class="nav-link gs-nav-link" href="#">
+                        <i class="fas fa-home me-1"></i>Home
+                    </a>
+                </li>
+
+                <!-- Products Dropdown -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link gs-nav-link dropdown-toggle" href="#" id="gsProductsDropdown" role="button" data-bs-toggle="dropdown">
+                        <i class="fas fa-box-open me-1"></i>Products
+                    </a>
+                    <ul class="dropdown-menu gs-dropdown">
+                        <li><a class="dropdown-item gs-dropdown-item" href="#"><i class="fas fa-tv me-2"></i>Televisions</a></li>
+                        <li><a class="dropdown-item gs-dropdown-item" href="#"><i class="fas fa-laptop me-2"></i>Laptops</a></li>
+                        <li><a class="dropdown-item gs-dropdown-item" href="#"><i class="fas fa-mobile-alt me-2"></i>Smartphones</a></li>
+                        <li><a class="dropdown-item gs-dropdown-item" href="#"><i class="fas fa-headphones me-2"></i>Accessories</a></li>
+                        <li><a class="dropdown-item gs-dropdown-item" href="#"><i class="fas fa-camera me-2"></i>Cameras</a></li>
+                        <li><a class="dropdown-item gs-dropdown-item" href="#"><i class="fas fa-gamepad me-2"></i>Gaming Consoles</a></li>
+                    </ul>
+                </li>
+
+                <!-- Categories Dropdown -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link gs-nav-link dropdown-toggle" href="#" id="gsCategoriesDropdown" role="button" data-bs-toggle="dropdown">
+                        <i class="fas fa-list-alt me-1"></i>Categories
+                    </a>
+                    <ul class="dropdown-menu gs-dropdown">
+                        <li><a class="dropdown-item gs-dropdown-item" href="#"><i class="fas fa-desktop me-2"></i>Computers</a></li>
+                        <li><a class="dropdown-item gs-dropdown-item" href="#"><i class="fas fa-tablet-alt me-2"></i>Tablets</a></li>
+                        <li><a class="dropdown-item gs-dropdown-item" href="#"><i class="fas fa-headphones-alt me-2"></i>Audio Devices</a></li>
+                        <li><a class="dropdown-item gs-dropdown-item" href="#"><i class="fas fa-battery-full me-2"></i>Power Solutions</a></li>
+                    </ul>
+                </li>
+
+                <!-- Deals Link -->
+                <li class="nav-item">
+                    <a class="nav-link gs-nav-link" href="#">
+                        <i class="fas fa-tags me-1"></i>Deals
+                    </a>
+                </li>
+
+                <!-- Support Link -->
+                
             </ul>
-            <form class="d-flex ms-3">
-                <input class="form-control me-2 bg-transparent text-light" type="search" placeholder="Search">
+
+            <!-- Search Bar -->
+            <form class="d-flex ms-3 gs-search-form">
+                <input class="form-control gs-search-input" type="search" placeholder="Search Products">
+                <button class="btn gs-search-btn" type="submit">
+                    <i class="fas fa-search"></i>
+                </button>
             </form>
+
+            <!-- Cart and Login Buttons -->
+            <ul class="navbar-nav gs-nav gs-cart-login">
+                <li class="nav-item">
+                    <a class="nav-link gs-nav-link gs-cart-btn" href="#">
+                        <i class="fas fa-shopping-cart me-1"></i>Cart
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link gs-nav-link gs-login-btn" href="#">
+                        <i class="fas fa-user me-1"></i>Login
+                    </a>
+                </li>
+            </ul>
         </div>
     </div>
 </nav>
@@ -246,7 +447,7 @@
 
 
 <!-- Updated Navbar (add ID to collapse element) -->
-<nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark py-3">
+<!-- <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark py-3">
     <div class="container">
         <a class="navbar-brand neon-underline" href="#">GLOWSHOP</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -263,7 +464,7 @@
             </form>
         </div>
     </div>
-</nav>
+</nav> -->
 
 <!-- Updated Hero Slider (add ID for carousel) -->
 <div class="hero-slider carousel slide" data-bs-ride="carousel" id="heroSlider">
