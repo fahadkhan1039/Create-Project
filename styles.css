@@ -1,98 +1,118 @@
-/* General Styles */
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f8f9fa;
+:root {
+    --neon-blue: #00f3ff;
+    --dark-bg: #0a192f;
 }
 
-/* Sidebar Styling */
-.sidebar {
-    width: 250px;
-    height: 100vh;
-    background: #333;
-    position: fixed;
-    top: 0;
-    left: -250px;
-    transition: all 0.3s ease-in-out;
-    padding-top: 20px;
-    z-index: 1000;
+/* Custom Glassmorphism Effect */
+.glass-card {
+    background: rgba(255, 255, 255, 0.1) !important;
+    backdrop-filter: blur(10px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    border-radius: 15px !important;
 }
 
-.sidebar.active {
-    left: 0;
+/* Animated Hero Slider */
+.hero-slider .carousel-item {
+    height: 70vh;
+    min-height: 500px;
 }
 
-.sidebar h5 {
-    border-bottom: 1px solid #fff;
-    padding-bottom: 10px;
-}
-
-.sidebar ul li {
-    padding: 10px;
-}
-
-.sidebar ul li a {
-    text-decoration: none;
-    color: white;
-    display: block;
-}
-
-.sidebar ul li a:hover {
-    background: #555;
-    border-radius: 5px;
-}
-
-/* Toggle Button */
-#sidebarToggle {
-    position: fixed;
-    top: 10px;
-    left: 10px;
-    z-index: 1001;
-}
-
-/* Card Styling */
-.card {
-    transition: transform 0.3s ease-in-out;
-    margin-bottom: 20px;
-}
-
-.card:hover {
-    transform: scale(1.05);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.card-img-top {
-    height: 200px;
+.hero-slider img {
     object-fit: cover;
+    filter: brightness(0.6);
 }
 
-/* Cart Icon */
-#cartIcon {
+/* Floating Animation */
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}
+.float-animation {
+    animation: float 4s ease-in-out infinite;
+}
+
+/* Hover Zoom Effect */
+.product-card img {
+    transition: transform 0.5s;
+}
+.product-card:hover img {
+    transform: scale(1.1);
+}
+
+/* Neon Underline */
+.neon-underline {
     position: relative;
+    display: inline-block;
 }
-
-#cartCount {
+.neon-underline::after {
+    content: '';
     position: absolute;
-    top: -10px;
-    right: -10px;
+    width: 100%;
+    height: 2px;
+    background: var(--neon-blue);
+    bottom: -5px;
+    left: 0;
+    transform: scaleX(0);
+    transition: transform 0.3s;
+}
+.neon-underline:hover::after {
+    transform: scaleX(1);
 }
 
-/* Modal Styling */
-.modal-content {
-    border-radius: 10px;
+/* Custom Neon Button */
+.btn-outline-neon {
+    border: 2px solid var(--neon-blue);
+    color: var(--neon-blue);
+    transition: all 0.3s;
+}
+.btn-outline-neon:hover {
+    background: var(--neon-blue);
+    color: var(--dark-bg);
 }
 
-.modal-body {
-    max-height: 400px;
-    overflow-y: auto;
+.btn-neon {
+    background: var(--neon-blue);
+    color: var(--dark-bg);
+    border: none;
+    transition: transform 0.3s;
+}
+.btn-neon:hover {
+    transform: scale(1.1);
+}
+  /* Add body padding to account for fixed navbar */
+body {
+padding-top: 70px;
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-    .sidebar {
-        left: -250px;
-    }
+/* Improved footer styling */
+.footer {
+background: rgba(0, 0, 0, 0.7);
+padding: 50px 0;
+margin-top: 100px;
+}
 
-    .sidebar.active {
-        left: 0;
-    }
+.footer h5 {
+color: var(--neon-blue);
+margin-bottom: 20px;
+}
+
+.footer a {
+color: #fff;
+text-decoration: none;
+transition: color 0.3s;
+}
+
+.footer a:hover {
+color: var(--neon-blue);
+}
+
+/* Ensure images load properly */
+.carousel-item img {
+width: 100%;
+height: 100%;
+}
+
+/* Fix navbar z-index */
+.navbar {
+z-index: 1000;
 }
