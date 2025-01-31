@@ -8,387 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <style>
-        :root {
-            --neon-blue: #00f3ff;
-            --dark-bg: #0a192f;
-        }
 
-
-        /* nabvar */
-
-        /* Navbar Background and Text Styling */
-        .gs-navbar {
-            background: linear-gradient(90deg, #1a1a1a, #0a192f);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-            padding: 0.5rem 1rem;
-        }
-
-        .gs-brand {
-            display: flex;
-            align-items: center;
-        }
-
-        .gs-brand-text {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #00f3ff;
-            /* Neon blue color for the brand */
-        }
-
-        /* Navbar Links */
-        .gs-nav-link {
-            color: #fff !important;
-            margin: 0 0.5rem;
-            padding: 0.5rem 1rem;
-            position: relative;
-            transition: all 0.3s ease;
-        }
-
-        .gs-nav-link:hover {
-            color: #00f3ff !important;
-        }
-
-        .gs-nav-link::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: 0;
-            width: 100%;
-            height: 2px;
-            background: #00f3ff;
-            transform: scaleX(0);
-            transform-origin: right;
-            transition: transform 0.3s ease;
-        }
-
-
-        /* Dropdown Menu */
-        .gs-dropdown {
-            background: #0a192f;
-            border: 1px solid #444;
-        }
-
-        .gs-dropdown-item {
-            color: #fff !important;
-            transition: all 0.3s ease;
-        }
-
-        .gs-dropdown-item:hover {
-            background: #00f3ff !important;
-            color: #1a1a1a !important;
-        }
-
-        /* Search Bar */
-        .gs-search-form {
-            margin-left: 1rem;
-            display: flex;
-            align-items: center;
-        }
-
-        .input-group {
-            position: relative;
-            display: flex;
-            align-items: center;
-            width: auto;
-        }
-
-        .gs-search-input {
-            background: #fff;
-            color: #fff;
-            border-right: none;
-            width: 200px;
-            transition: all 0.3s ease;
-            border-radius: 20px 0 0 20px;
-
-            /* Rounded left corners */
-        }
-
-        .gs-search-input:focus {
-            border-color: #00f3ff;
-            box-shadow: 0 0 10px #00f3ff;
-            outline: none;
-        }
-
-        .gs-search-btn {
-            background: #00f3ff;
-            color: #1a1a1a;
-            border-left: none;
-            border-radius: 0 20px 20px 0;
-            /* Rounded right corners */
-            transition: all 0.3s ease;
-        }
-
-        .gs-search-btn:hover {
-            background: #03d3e6;
-        }
-
-
-        /* Cart and Login Buttons */
-        .gs-cart-login {
-            margin-left: 1rem;
-        }
-
-        .gs-cart-btn,
-        .gs-login-btn {
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 5px;
-            margin: 0 0.25rem;
-            padding: 0.5rem 1rem;
-            transition: all 0.3s ease;
-        }
-
-        .gs-cart-btn:hover,
-        .gs-login-btn:hover {
-            background: #00f3ff;
-            color: #1a1a1a !important;
-        }
-
-        /* Responsive Adjustments */
-        @media (max-width: 992px) {
-            .gs-nav {
-                margin-top: 1rem;
-            }
-
-            .gs-search-form {
-                margin-top: 1rem;
-            }
-
-            .gs-cart-login {
-                margin-top: 1rem;
-            }
-        }
-
-
-
-
-        .glass-card {
-            background: rgba(255, 255, 255, 0.1) !important;
-            backdrop-filter: blur(10px) !important;
-            border: 1px solid rgba(255, 255, 255, 0.2) !important;
-            border-radius: 15px !important;
-        }
-
-        /* Animated Hero Slider */
-        .hero-slider .carousel-item {
-            height: 70vh;
-            min-height: 500px;
-        }
-
-        .hero-slider img {
-            object-fit: cover;
-            filter: brightness(0.6);
-        }
-
-        /* Floating Animation */
-        @keyframes float {
-
-            0%,
-            100% {
-                transform: translateY(0);
-            }
-
-            50% {
-                transform: translateY(-20px);
-            }
-        }
-
-        .float-animation {
-            animation: float 4s ease-in-out infinite;
-        }
-
-        /* Filter Box */
-        .filter-box {
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            padding: 15px;
-            color: white;
-        }
-
-        .filter-box h6 {
-            color: #00f3ff;
-        }
-
-        .filter-box input[type="checkbox"] {
-            margin-right: 8px;
-        }
-
-        .filter-box input[type="checkbox"]:hover {
-            cursor: pointer;
-        }
-
-        /* Product Card */
-        .product-card {
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 15px;
-            padding: 15px;
-            transition: all 0.3s ease-in-out;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-        }
-
-        .product-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-        }
-
-
-        /* Price Range Styling */
-        #priceRange {
-            appearance: none;
-            width: 100%;
-            height: 6px;
-            background: linear-gradient(to right, #00f3ff, #1a1a1a);
-            outline: none;
-            border-radius: 5px;
-            transition: background 0.3s ease;
-        }
-
-        #priceRange:hover {
-            background: linear-gradient(to right, #00c4d6, #1a1a1a);
-        }
-
-        /* Selected Price Display */
-        #selectedPrice {
-            font-weight: bold;
-            color: #00f3ff;
-        }
-
-        /* Custom Styling for Range Slider */
-        input[type="range"] {
-            -webkit-appearance: none;
-            /* Remove default styling */
-            appearance: none;
-            width: 100%;
-            height: 6px;
-            background: #00f3ff;
-            /* Change the track color */
-            border-radius: 5px;
-            outline: none;
-            transition: all 0.3s ease;
-        }
-
-        /* Change the thumb (circle) color */
-        input[type="range"]::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            appearance: none;
-            width: 18px;
-            height: 18px;
-            background: #00f3ff;
-            /* Change thumb color (yellow in this example) */
-            border-radius: 50%;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        /* Hover effect for the thumb */
-        input[type="range"]::-webkit-slider-thumb:hover {
-            background: #ffa500;
-            /* Darker shade on hover */
-        }
-
-        /* For Firefox */
-        input[type="range"]::-moz-range-thumb {
-            width: 18px;
-            height: 18px;
-            background: #ffcc00;
-            /* Change thumb color */
-            border-radius: 50%;
-            cursor: pointer;
-        }
-
-
-        /* Responsive Grid */
-        @media (max-width: 768px) {
-            .filter-box {
-                display: none;
-            }
-        }
-
-
-
-        /* Neon Underline */
-        .neon-underline {
-            position: relative;
-            display: inline-block;
-        }
-
-        .neon-underline::after {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 2px;
-            background: var(--neon-blue);
-            bottom: -5px;
-            left: 0;
-            transform: scaleX(0);
-            transition: transform 0.3s;
-        }
-
-        .neon-underline:hover::after {
-            transform: scaleX(1);
-        }
-
-        /* Custom Neon Button */
-        .btn-outline-neon {
-            border: 2px solid var(--neon-blue);
-            color: var(--neon-blue);
-            transition: all 0.3s;
-        }
-
-        .btn-outline-neon:hover {
-            background: var(--neon-blue);
-            color: var(--dark-bg);
-        }
-
-        .btn-neon {
-            background: var(--neon-blue);
-            color: var(--dark-bg);
-            border: none;
-            transition: transform 0.3s;
-        }
-
-        .btn-neon:hover {
-            transform: scale(1.1);
-        }
-
-        /* Add body padding to account for fixed navbar */
-        body {
-            padding-top: 70px;
-        }
-
-        /* Improved footer styling */
-        .footer {
-            background: rgba(0, 0, 0, 0.7);
-            padding: 50px 0;
-            margin-top: 100px;
-        }
-
-        .footer h5 {
-            color: var(--neon-blue);
-            margin-bottom: 20px;
-        }
-
-        .footer a {
-            color: #fff;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        .footer a:hover {
-            color: var(--neon-blue);
-        }
-
-        /* Ensure images load properly */
-        .carousel-item img {
-            width: 100%;
-            height: 100%;
-        }
-
-        /* Fix navbar z-index */
-        .navbar {
-            z-index: 1000;
-        }
-    </style>
 
     <link rel="stylesheet" href="styles.css">
 
@@ -668,27 +288,6 @@
     </section>
 
 
-
-    <!-- Updated Navbar (add ID to collapse element) -->
-    <!-- <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark py-3">
-    <div class="container">
-        <a class="navbar-brand neon-underline" href="#">GLOWSHOP</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link neon-underline" href="#">Home</a></li>
-                <li class="nav-item"><a class="nav-link neon-underline" href="#">Products</a></li>
-                <li class="nav-item"><a class="nav-link neon-underline" href="#">Cart</a></li>
-            </ul>
-            <form class="d-flex ms-3">
-                <input class="form-control me-2 bg-transparent text-light" type="search" placeholder="Search">
-            </form>
-        </div>
-    </div>
-</nav> -->
-
     <!-- Updated Hero Slider (add ID for carousel) -->
     <div class="hero-slider carousel slide" data-bs-ride="carousel" id="heroSlider">
         <!-- ... rest of carousel code remains same ... -->
@@ -698,50 +297,66 @@
     <footer class="footer">
         <div class="container">
             <div class="row g-4">
-                <div class="col-md-4">
-                    <h5>GLOWSHOP</h5>
-                    <p class="text-muted">Illuminate your style with our curated collection of premium products.</p>
+                <!-- About Section -->
+                <div class="col-lg-4 col-md-6">
+                    <h5 class="footer-title">GLOWSHOP</h5>
+                    <p class="footer-text">Illuminate your style with our curated collection of premium products.</p>
                     <div class="social-links">
-                        <a href="#" class="me-2"><i class="fab fa-facebook"></i></a>
-                        <a href="#" class="me-2"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="me-2"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <h5>Quick Links</h5>
-                    <ul class="list-unstyled">
-                        <li class="mb-2"><a href="#" class="d-flex align-items-center"><i
-                                    class="fas fa-chevron-right me-2"></i>Home</a></li>
-                        <li class="mb-2"><a href="#" class="d-flex align-items-center"><i
-                                    class="fas fa-chevron-right me-2"></i>Products</a></li>
-                        <li class="mb-2"><a href="#" class="d-flex align-items-center"><i
-                                    class="fas fa-chevron-right me-2"></i>Cart</a></li>
+    
+                <!-- Quick Links -->
+                <div class="col-lg-2 col-md-6">
+                    <h5 class="footer-title">Quick Links</h5>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Home</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Products</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Cart</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Contact</a></li>
                     </ul>
                 </div>
-                <div class="col-md-4">
-                    <h5>Newsletter</h5>
+    
+                <!-- Customer Support -->
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="footer-title">Customer Support</h5>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> FAQ</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Shipping & Returns</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Privacy Policy</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Terms of Service</a></li>
+                    </ul>
+                </div>
+    
+                <!-- Newsletter -->
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="footer-title">Newsletter</h5>
                     <form>
-                        <div class="input-group mb-3">
-                            <input type="email" class="form-control bg-transparent text-light"
-                                placeholder="Enter your email">
-                            <button class="btn btn-neon" type="button">Subscribe</button>
+                        <div class="newsletter-box">
+                            <input type="email" class="newsletter-input" placeholder="Enter your email">
+                            <button class="newsletter-btn" type="button">Subscribe</button>
                         </div>
-                        <small class="text-muted">Get 10% off your first order!</small>
+                        <small class="footer-note">Get 10% off your first order!</small>
                     </form>
                 </div>
             </div>
-            <hr class="mt-5 mb-4">
-            <div class="row">
-                <div class="col-md-6">
-                    <p class="text-muted">&copy; 2023 GLOWSHOP. All rights reserved.</p>
-                </div>
-                <div class="col-md-6 text-end">
-                    <a href="#" class="text-muted me-3">Privacy Policy</a>
-                    <a href="#" class="text-muted">Terms of Service</a>
+    
+            <hr class="footer-divider">
+    
+            <!-- Bottom Footer -->
+            <div class="footer-bottom d-flex justify-content-between align-items-center">
+                <p class="footer-copy">&copy; 2024 GLOWSHOP. All rights reserved.</p>
+                <div>
+                    <a href="#">Privacy Policy</a> | 
+                    <a href="#">Terms of Service</a>
                 </div>
             </div>
         </div>
     </footer>
+    
+    
 
     <!-- Add Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">

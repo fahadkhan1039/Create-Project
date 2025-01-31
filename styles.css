@@ -3,7 +3,154 @@
     --dark-bg: #0a192f;
 }
 
-/* Custom Glassmorphism Effect */
+
+/* nabvar */
+
+/* Navbar Background and Text Styling */
+.gs-navbar {
+    background: linear-gradient(90deg, #1a1a1a, #0a192f);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    padding: 0.5rem 1rem;
+}
+
+.gs-brand {
+    display: flex;
+    align-items: center;
+}
+
+.gs-brand-text {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #00f3ff;
+    /* Neon blue color for the brand */
+}
+
+/* Navbar Links */
+.gs-nav-link {
+    color: #fff !important;
+    margin: 0 0.5rem;
+    padding: 0.5rem 1rem;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.gs-nav-link:hover {
+    color: #00f3ff !important;
+}
+
+.gs-nav-link::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background: #00f3ff;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s ease;
+}
+
+
+/* Dropdown Menu */
+.gs-dropdown {
+    background: #0a192f;
+    border: 1px solid #444;
+}
+
+.gs-dropdown-item {
+    color: #fff !important;
+    transition: all 0.3s ease;
+}
+
+.gs-dropdown-item:hover {
+    background: #00f3ff !important;
+    color: #1a1a1a !important;
+}
+
+/* Search Bar */
+.gs-search-form {
+    margin-left: 1rem;
+    display: flex;
+    align-items: center;
+}
+
+.input-group {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: auto;
+}
+
+.gs-search-input {
+    background: #fff;
+    color: #fff;
+    border-right: none;
+    width: 200px;
+    transition: all 0.3s ease;
+    border-radius: 20px 0 0 20px;
+
+    /* Rounded left corners */
+}
+
+.gs-search-input:focus {
+    border-color: #00f3ff;
+    box-shadow: 0 0 10px #00f3ff;
+    outline: none;
+}
+
+.gs-search-btn {
+    background: #00f3ff;
+    color: #1a1a1a;
+    border-left: none;
+    border-radius: 0 20px 20px 0;
+    /* Rounded right corners */
+    transition: all 0.3s ease;
+}
+
+.gs-search-btn:hover {
+    background: #03d3e6;
+}
+
+
+/* Cart and Login Buttons */
+.gs-cart-login {
+    margin-left: 1rem;
+}
+
+.gs-cart-btn,
+.gs-login-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+    margin: 0 0.25rem;
+    padding: 0.5rem 1rem;
+    transition: all 0.3s ease;
+}
+
+.gs-cart-btn:hover,
+.gs-login-btn:hover {
+    background: #00f3ff;
+    color: #1a1a1a !important;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 992px) {
+    .gs-nav {
+        margin-top: 1rem;
+    }
+
+    .gs-search-form {
+        margin-top: 1rem;
+    }
+
+    .gs-cart-login {
+        margin-top: 1rem;
+    }
+}
+
+
+
+
 .glass-card {
     background: rgba(255, 255, 255, 0.1) !important;
     backdrop-filter: blur(10px) !important;
@@ -24,26 +171,136 @@
 
 /* Floating Animation */
 @keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-20px); }
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-20px);
+    }
 }
+
 .float-animation {
     animation: float 4s ease-in-out infinite;
 }
 
-/* Hover Zoom Effect */
-.product-card img {
-    transition: transform 0.5s;
+/* Filter Box */
+.filter-box {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 15px;
+    color: white;
 }
-.product-card:hover img {
-    transform: scale(1.1);
+
+.filter-box h6 {
+    color: #00f3ff;
 }
+
+.filter-box input[type="checkbox"] {
+    margin-right: 8px;
+}
+
+.filter-box input[type="checkbox"]:hover {
+    cursor: pointer;
+}
+
+/* Product Card */
+.product-card {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 15px;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+
+/* Price Range Styling */
+#priceRange {
+    appearance: none;
+    width: 100%;
+    height: 6px;
+    background: linear-gradient(to right, #00f3ff, #1a1a1a);
+    outline: none;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+}
+
+#priceRange:hover {
+    background: linear-gradient(to right, #00c4d6, #1a1a1a);
+}
+
+/* Selected Price Display */
+#selectedPrice {
+    font-weight: bold;
+    color: #00f3ff;
+}
+
+/* Custom Styling for Range Slider */
+input[type="range"] {
+    -webkit-appearance: none;
+    /* Remove default styling */
+    appearance: none;
+    width: 100%;
+    height: 6px;
+    background: #00f3ff;
+    /* Change the track color */
+    border-radius: 5px;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+/* Change the thumb (circle) color */
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    background: #00f3ff;
+    /* Change thumb color (yellow in this example) */
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+/* Hover effect for the thumb */
+input[type="range"]::-webkit-slider-thumb:hover {
+    background: #ffa500;
+    /* Darker shade on hover */
+}
+
+/* For Firefox */
+input[type="range"]::-moz-range-thumb {
+    width: 18px;
+    height: 18px;
+    background: #ffcc00;
+    /* Change thumb color */
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+
+/* Responsive Grid */
+@media (max-width: 768px) {
+    .filter-box {
+        display: none;
+    }
+}
+
+
 
 /* Neon Underline */
 .neon-underline {
     position: relative;
     display: inline-block;
 }
+
 .neon-underline::after {
     content: '';
     position: absolute;
@@ -55,6 +312,7 @@
     transform: scaleX(0);
     transition: transform 0.3s;
 }
+
 .neon-underline:hover::after {
     transform: scaleX(1);
 }
@@ -65,6 +323,7 @@
     color: var(--neon-blue);
     transition: all 0.3s;
 }
+
 .btn-outline-neon:hover {
     background: var(--neon-blue);
     color: var(--dark-bg);
@@ -76,43 +335,179 @@
     border: none;
     transition: transform 0.3s;
 }
+
 .btn-neon:hover {
     transform: scale(1.1);
 }
-  /* Add body padding to account for fixed navbar */
+
+/* Add body padding to account for fixed navbar */
 body {
-padding-top: 70px;
+    padding-top: 70px;
 }
 
 /* Improved footer styling */
+/* Footer General Styles */
 .footer {
-background: rgba(0, 0, 0, 0.7);
-padding: 50px 0;
-margin-top: 100px;
+    background: #111;
+    padding: 60px 0 20px;
+    color: #ccc;
+    text-align: left;
+    margin-top: 100px;
 }
 
-.footer h5 {
-color: var(--neon-blue);
-margin-bottom: 20px;
+/* Footer Titles */
+.footer-title {
+    color: #00f3ff;
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    text-transform: uppercase;
 }
 
-.footer a {
-color: #fff;
-text-decoration: none;
-transition: color 0.3s;
+/* Footer Text */
+.footer-text {
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+    line-height: 1.6;
 }
 
-.footer a:hover {
-color: var(--neon-blue);
+/* Social Icons */
+.social-links {
+    display: flex;
+    gap: 15px;
 }
+
+.social-icon {
+    font-size: 1.5rem;
+    color: #00f3ff;
+    transition: transform 0.3s, color 0.3s;
+}
+
+.social-icon:hover {
+    color: #00c4d6;
+    transform: scale(1.2);
+}
+
+/* Footer Links */
+.footer-links {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links li {
+    margin-bottom: 10px;
+}
+
+.footer-links a {
+    text-decoration: none;
+    color: #bbb;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+}
+
+.footer-links a i {
+    margin-right: 8px;
+    color: #00f3ff;
+}
+
+.footer-links a:hover {
+    color: #00f3ff;
+}
+
+/* Newsletter Box */
+.newsletter-box {
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+    padding: 3px;
+}
+
+.newsletter-input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    color: #fff;
+    padding: 8px;
+    outline: none;
+}
+
+.newsletter-input::placeholder {
+    color: #ccc;
+}
+
+.newsletter-btn {
+    background: #00f3ff;
+    color: #1a1a1a;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.newsletter-btn:hover {
+    background: #00c4d6;
+}
+
+/* Footer Divider */
+.footer-divider {
+    border-color: rgba(255, 255, 255, 0.1);
+    margin: 30px 0;
+}
+
+/* Bottom Footer */
+.footer-bottom {
+    font-size: 0.85rem;
+    color: #999;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-bottom a {
+    color: #bbb;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-bottom a:hover {
+    color: #00f3ff;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .social-links {
+        justify-content: center;
+    }
+
+    /* .footer-links { */
+        /* text-align: center; */
+    /* } */
+
+    .newsletter-box {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .newsletter-input {
+        width: 100%;
+        text-align: center;
+    }
+}
+
 
 /* Ensure images load properly */
 .carousel-item img {
-width: 100%;
-height: 100%;
+    width: 100%;
+    height: 100%;
 }
 
 /* Fix navbar z-index */
 .navbar {
-z-index: 1000;
+    z-index: 1000;
 }
