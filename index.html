@@ -94,12 +94,13 @@
         }
 
         .gs-search-input {
-            background: rgba(255, 255, 255, 0.1);
+            background: #fff;
             color: #fff;
             border-right: none;
             width: 200px;
             transition: all 0.3s ease;
             border-radius: 20px 0 0 20px;
+
             /* Rounded left corners */
         }
 
@@ -119,7 +120,7 @@
         }
 
         .gs-search-btn:hover {
-            background: #00c4d6;
+            background: #03d3e6;
         }
 
 
@@ -250,6 +251,49 @@
         #selectedPrice {
             font-weight: bold;
             color: #00f3ff;
+        }
+
+        /* Custom Styling for Range Slider */
+        input[type="range"] {
+            -webkit-appearance: none;
+            /* Remove default styling */
+            appearance: none;
+            width: 100%;
+            height: 6px;
+            background: #00f3ff;
+            /* Change the track color */
+            border-radius: 5px;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        /* Change the thumb (circle) color */
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 18px;
+            height: 18px;
+            background: #00f3ff;
+            /* Change thumb color (yellow in this example) */
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        /* Hover effect for the thumb */
+        input[type="range"]::-webkit-slider-thumb:hover {
+            background: #ffa500;
+            /* Darker shade on hover */
+        }
+
+        /* For Firefox */
+        input[type="range"]::-moz-range-thumb {
+            width: 18px;
+            height: 18px;
+            background: #ffcc00;
+            /* Change thumb color */
+            border-radius: 50%;
+            cursor: pointer;
         }
 
 
